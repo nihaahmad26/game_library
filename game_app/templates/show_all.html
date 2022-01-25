@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto"></ul>
+                <span class="navbar-text">
+                   <h1> Hello {{user.first_name}}! </a> </h1>
+                   <button type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" class="btn btn-secondary">
+                    <a href="/games/page">Add New Game</a>
+                    </button>
+                    <button type="button" data-toggle="collapse" data-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" class="btn btn-secondary">
+                    <a href="/logout" role="button">Logout</a>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </nav>
+
+                <div>
+                        
+    <h1>All Games</h1>
+    <div class="row">
+    {% for game in all_games %}
+    <div>
+    <img src="{{ MEDIA_ROOT }}{{game.image}}" class="img-thumbnail"/>
+ <div class="font-weight-bold"><a href="/games/{{game.id}}" role="button">{{ game.title }}</a></div>
+</div>
+
+    {% endfor %}
+</div>
+</div>
+
+
+                    
+                </div>
+            </div>
+</body>
+</html>

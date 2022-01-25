@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <form action="/games/{{game.id}}/{{review.id}}/upd" method="POST">
+        <div class="form-group">
+        {% csrf_token %}
+        {% for message in messages %}
+            <p class="text-danger small">{{ message }}</p>
+        {% endfor %} 
+
+            Rating (out of 5) <select class="form-group" name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select> 
+
+        <div class="form-group">
+            <label for="review">Review</label>
+            <input type="text" class="form-control" name="review">
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+    </form>
+
+</body>
+</html>

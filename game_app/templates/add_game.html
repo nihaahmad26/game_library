@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="form-group">
+    <form action="/games/create" method="post">
+        {% csrf_token %} 
+        {% for message in messages %}
+            <p class="text-danger small">{{ message }}</p>
+        {% endfor %}
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" name="title">
+            
+        </div>
+        <div class="form-group">
+            <label for="release">Year Released</label>
+            <input type="date" class="form-control" name="release">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" name="description">
+        </div>
+        <div class="form-group">
+            <label for="image">Image URL</label>
+            <input type="url" class="form-control" name="image">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</div>
+    
+</body>
+</html>                

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav>
+        <div>
+            
+            <button type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" class="btn btn-outline-info">
+                <a href="/games">All Games</a>
+            </button>
+            <button type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" class="btn btn-outline-info">
+                <a href="/logout">Logout</a>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarText">
+               
+                    
+            
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        <div>
+            <div class="p-3 mb-2 bg-dark text-white">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <!-- {{game.image}} -->
+                <img class="img-thumbnail" src="{{ MEDIA_ROOT }}{{game.image}}"/>
+                <h3>{{game.title}}</h3>
+                <p>Year Release: {{game.release}}</p>
+                <p>Description: {{game.description}}</p>
+                
+                <form action="/games/{{game.id}}/update" method="post">
+                    {% csrf_token %}
+                    <label for="title">Title</label>
+                    <input name="title" value= "{{game.title}}">
+                    <label for="release">Year Released</label>
+                    <input type = "date" name="release" value= "{{game.release}}">
+                    <label for="description">Description</label>
+                    <input name="description" value= "{{game.description}}">
+                    <label for="image">Game Image URL</label>
+                    <input type ="url" name="image" value= "{{game.image}}">
+                    <button type=submit >Update</button>
+                </form>
+                <button type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" class="btn btn-outline-info">
+                <a href="/games/{{game.id}}/delete" role="button">Delete Game</a>
+                </button>
+                
+            </div>
+            <div>
+                <h2>All Reviews</h2>
+                <button type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" class="btn btn-outline-info">
+                <a href="/games/{{game.id}}/review">Add Review</a>
+                </button>
+            </div>
+
+            <div class="p-3 mb-2 bg-secondary text-white">
+            {% for review in all_reviews %}
+           <p> <h3>By "{{review.creator.first_name}}"</h3><h5>Rating: {{review.rating}}/5</h5> </p>
+           
+            Review: {{review.review}}
+            {% if review.creator.id == request.session.user_id %}
+            <a href="/games/{{game.id}}/{{review.id}}/del" role="button">Delete</a>
+            <a href="/games/{{game.id}}/{{review.id}}/updatereview" role="button">Update</a>
+    
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+</body>
+</html>
