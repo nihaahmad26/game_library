@@ -10,18 +10,24 @@
 </head>
 <body>
     <div class="form-group">
+        <button type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" class="btn btn-secondary">
+                    <a href="/games">Home</a>
+                    </button>
+                    <div class ="d-flex justify-content-center">
     <form action="/games/create" method="post">
         {% csrf_token %} 
         {% for message in messages %}
             <p class="text-danger small">{{ message }}</p>
         {% endfor %}
         <div class="form-group">
+            <h1>Add a New Game to the Library</h1>
             <label for="title">Title</label>
             <input type="text" class="form-control" name="title">
             
         </div>
         <div class="form-group">
-            <label for="release">Year Released</label>
+            <label for="release">Date Released</label>
             <input type="date" class="form-control" name="release">
         </div>
         <div class="form-group">
@@ -34,6 +40,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+</div>
 </div>
 </div>
     

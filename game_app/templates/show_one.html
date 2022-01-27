@@ -48,8 +48,8 @@
                     {% csrf_token %}
                     <label for="title">Title</label>
                     <input name="title" value= "{{game.title}}">
-                    <label for="release">Year Released</label>
-                    <input type = "date" name="release" value= "{{game.release}}">
+                    <label for="release" >Year Released</label>
+                    <input type = "date" name="release" value="{{game.release|date:"Y-m-d" }}">
                     <label for="description">Description</label>
                     <input name="description" value= "{{game.description}}">
                     <label for="image">Game Image URL</label>

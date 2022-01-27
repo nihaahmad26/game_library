@@ -50,15 +50,15 @@ class GameManager(models.Manager):
     def game_validator(self, postData):
         errors = {}
         print(postData)
-        if len(postData['title']) < 0:
+        if len(postData['title']) < 1:
                 errors['title'] = "Game title must be entered"
-        if len(postData['description']) < 0:
+        if len(postData['image']) < 1:
+            errors['image'] = "image URL must be entered"
+        if len(postData['release']) < 1:
+            errors['release'] = "release date must be entered"
+        if len(postData['description']) < 1:
                 errors['description'] = "description must be entered"
-        if len(postData['release']) < 0:
-                errors['release'] = "release date must be entered"
-        if len(postData['image']) < 0:
-                errors['image'] = "image must be entered"
-        
+
         return errors
 
 class Game(models.Model):

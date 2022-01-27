@@ -57,8 +57,9 @@ def add_game(request):
     if errors:
         for e in errors.values():
             messages.error(request,e)
-        return redirect('/')
+        return redirect('/games/page')
     else:
+        print(request.POST)
         game = Game.objects.create(
             title = request.POST['title'],
             release = request.POST['release'],
@@ -79,6 +80,7 @@ def add_review(request, game_id):
         return redirect(f"/games/{game_id}")
 
 def show_one(request, game_id):
+    print("GAME OBJECT", Game.objects.get(id=game_id).release)
     context = {
         'game': Game.objects.get(id=game_id),
         'all_reviews':Review.objects.filter(game_review=game_id)
