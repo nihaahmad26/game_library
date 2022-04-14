@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -39,21 +41,23 @@
                 </ul>
                 {% endif %}
                 <!-- {{game.image}} -->
-                <img class="img-thumbnail" src="{{ MEDIA_ROOT }}{{game.image}}"/>
+                <img class="thumbnail" src="../media/{{ game.image }}"/>
                 <h3>{{game.title}}</h3>
                 <p>Year Release: {{game.release}}</p>
                 <p>Description: {{game.description}}</p>
                 
-                <form action="/games/{{game.id}}/update" method="post">
-                    {% csrf_token %}
+                <form action="/games/{{game.id}}/update" method="post" enctype="multipart/form-data">
+                    {% csrf_token %} 
+                    {{ form.media }}
+                    {{ form.as_p }}
                     <label for="title">Title</label>
                     <input name="title" value= "{{game.title}}">
                     <label for="release" >Year Released</label>
                     <input type = "date" name="release" value="{{game.release|date:"Y-m-d" }}">
                     <label for="description">Description</label>
                     <input name="description" value= "{{game.description}}">
-                    <label for="image">Game Image URL</label>
-                    <input type ="url" name="image" value= "{{game.image}}">
+                    <label for="image">Game Image</label>
+                    <input type ="file" name="image" value= "{{game.image}}">
                     <button type=submit >Update</button>
                 </form>
                 <button type="button" data-toggle="collapse" data-target="#navbarText"

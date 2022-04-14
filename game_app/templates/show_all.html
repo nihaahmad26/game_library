@@ -1,16 +1,18 @@
 
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
 </head>
 <body>
+    
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             
@@ -30,16 +32,16 @@
             </div>
         </div>
     </nav>
-
                 <div>
                         
     <h1 class= "px-2">All Games</h1>
     <div class="row justify-content-start">
     {% for game in all_games %}
-    <div class="px-2">
-    <img src="{{ MEDIA_ROOT }}{{game.image}}" class="img-thumbnail"/>
- <div class="font-weight-bold"><a href="/games/{{game.id}}" role="button">{{ game.title }}</a></div>
-</div>
+    {% load staticfiles %}
+    <div class="game">
+     <img src="../media/{{ game.image }}" class="thumbnail" />  
+    <div class="gametext"><a href="/games/{{game.id}}" role="button">{{ game.title }}</a></div>
+    </div>
 
     {% endfor %}
 </div>

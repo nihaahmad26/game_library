@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Review, User, Game
 from django.db.models import Q
+from django.core.files.storage import FileSystemStorage
+
 
 
 def index(request):
@@ -64,7 +66,7 @@ def add_game(request):
             title = request.POST['title'],
             release = request.POST['release'],
             description = request.POST['description'],
-            image = request.POST['image']
+            image = request.FILES['image']
         )
     return redirect('/games')
 
@@ -104,7 +106,7 @@ def update(request, game_id):
         game.title = request.POST['title']
         game.release = request.POST['release']
         game.description = request.POST['description']
-        game.image = request.POST['image']
+        game.image = request.FILES['image']
         game.save()
         return redirect(f"/games")
     

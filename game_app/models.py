@@ -52,8 +52,8 @@ class GameManager(models.Manager):
         print(postData)
         if len(postData['title']) < 1:
                 errors['title'] = "Game title must be entered"
-        if len(postData['image']) < 1:
-            errors['image'] = "image URL must be entered"
+        # if len(postData['image']) < 1:
+        #     errors['image'] = "image URL must be entered"
         if len(postData['release']) < 1:
             errors['release'] = "release date must be entered"
         if len(postData['description']) < 1:
@@ -64,7 +64,7 @@ class GameManager(models.Manager):
 class Game(models.Model):
 
     title = models.CharField(max_length=255)
-    image = models.ImageField(null = True, blank = True)
+    image = models.ImageField(null = True, blank = True, upload_to='images/')
     release = models.DateField(datetime)
     description = models.CharField(max_length=255)
     created_at = models.DateField(auto_now_add=True)
