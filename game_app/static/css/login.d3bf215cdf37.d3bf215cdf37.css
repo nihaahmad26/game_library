@@ -1,0 +1,57 @@
+.contain{
+    background-image: url('https://t3.ftcdn.net/jpg/03/01/04/44/360_F_301044458_3LKOHOHjZMK67nHIVHzq6K1a6pNXjb2c.jpg');
+    background-size: 300px 100px;
+    background-size: cover;
+    height: 1000px;
+}
+
+.glow {
+    font-size: 80px;
+    color: #fff;
+    margin-left: 475px;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+  
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px #44ade9, 0 0 20px #44ade9, 0 0 30px #44ade9, 0 0 40px #44ade9, 0 0 50px #44ade9, 0 0 60px #44ade9, 0 0 70px #44ade9;
+    }
+    to {
+      text-shadow: 0 0 20px #d944e9, 0 0 30px #d944e9, 0 0 40px #d944e9, 0 0 50px #44ade9, 0 0 60px #44ade9, 0 0 70px #44ade9, 0 0 80px #44ade9;
+    }
+  }
+
+  .regist{
+    background-color: #44ade9;
+    padding: 20px;
+    height: 500px;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+
+  .bg-info{
+    background-color: #d944e9;
+    padding: 20px;
+    height: 500px;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+
+  }
+
+.formu{
+    align-self: center;
+    width  : 300px;
+    margin-left : 450px;
+    padding: 1em;
+    box-sizing: border-box;    
+    /* we create our grid */
+    display  : grid;
+    grid-gap : 40px;
+    grid-template-columns : repeat(2, 1fr);
+    grid-template-rows    : 10em 1em 1em 1em;
+    
+}
