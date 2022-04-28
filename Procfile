@@ -1,1 +1,1 @@
-web: gunicorn games.wsgi:app
+web gunicorn games.wsgi:app
